@@ -17,6 +17,7 @@ Finally, the List component exports the ListComponent component wrapped in the m
 improve performance in some cases.
 
 #2.What problems / warnings are there with code?
+
 There are a few problems with the code:
 
 The setSelectedIndex function should be declared using useState, like this
