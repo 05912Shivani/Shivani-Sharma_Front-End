@@ -30,7 +30,7 @@ The propTypes definition for the items prop in the WrappedListComponent componen
 should be PropTypes.arrayOf(PropTypes.shape(...)).
 
 In the SingleListItem component, the isSelected prop is being passed as a boolean, but in the component itself it's being used to set the 
-background color of the <li> element. This will result in the background color being set to "green" when isSelected is truthy (which includes true, 
+background color of the li element. This will result in the background color being set to "green" when isSelected is truthy (which includes true, 
 non-empty strings, and non-zero numbers) and "red" otherwise. To fix this, the isSelected prop should be compared to the index of the current item,
  like this:
  
