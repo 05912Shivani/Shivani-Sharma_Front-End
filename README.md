@@ -21,6 +21,7 @@ improve performance in some cases.
 There are a few problems with the code:
 
 The setSelectedIndex function should be declared using useState, like this
+
 const [selectedIndex, setSelectedIndex] = useState(null);
 
 The current code declares setSelectedIndex as the setter function for selectedIndex, which is not correct.
