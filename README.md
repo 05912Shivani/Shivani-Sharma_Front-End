@@ -51,6 +51,79 @@ have changed, added or removed, which can be useful when rendering large lists.
 
 Change the useState initialization for setSelectedIndex to a default value instead of null. This can improve the performance of the component by 
 reducing the number of times the state needs to be updated.
+```
+import React, { useState, useEffect, memo, useCallback } from 'react';
+import PropTypes from 'prop-types';
+
+// Single List Item
+const WrappedSingleListItem = ({
+  index,
+  isSelected,
+  onClickHandler,
+  text,
+}) => {
+  return (
+    <li
+      style={{ backgroundColor: isSelected ? 'green' : 'red'}}
+      onClick={onClickHandler}
+    >
+      {text}
+    </li>
+  );
+};
+
+WrappedSingleListItem.propTypes = {
+  index: PropTypes.number,
+  isSelected: PropTypes.bool,
+  onClickHandler: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+};
+
+const SingleListItem = memo(WrappedSingleListItem);
+
+// List Component
+const WrappedListComponent = ({
+  items,
+}) => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  useEffect(() => {
+    setSelectedIndex(0);
+  }, [items]);
+
+  const handleClick = useCallback(index => {
+    setSelectedIndex(index);
+  }, []);
+
+  return (
+    <ul style={{ textAlign: 'left' }}>
+      {items.map((item, index) => (
+        <SingleListItem
+          key={item.text}
+          onClickHandler={() => handleClick(index)}
+          text={item.text}
+          index={index}
+          isSelected={index === selectedIndex}
+        />
+      ))}
+    </ul>
+  )
+};
+
+WrappedListComponent.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.shape({
+    text: PropTypes.string.isRequired,
+  })),
+};
+
+WrappedListComponent.defaultProps = {
+  items: [],
+};
+
+const List = memo(WrappedListComponent);
+
+export default List;
+```
 
 
   
