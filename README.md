@@ -51,9 +51,7 @@ have changed, added or removed, which can be useful when rendering large lists.
 
 Change the useState initialization for setSelectedIndex to a default value instead of null. This can improve the performance of the component by 
 reducing the number of times the state needs to be updated.
-  
 import React, { useState, useEffect, memo, useCallback } from 'react';
-
 import PropTypes from 'prop-types';
 
 // Single List Item
@@ -124,3 +122,7 @@ WrappedListComponent.defaultProps = {
 const List = memo(WrappedListComponent);
 
 export default List;
+  
+
+      
+     
