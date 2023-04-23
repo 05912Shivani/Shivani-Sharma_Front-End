@@ -53,6 +53,7 @@ Change the useState initialization for setSelectedIndex to a default value inste
 reducing the number of times the state needs to be updated.
   
 import React, { useState, useEffect, memo, useCallback } from 'react';
+
 import PropTypes from 'prop-types';
 
 // Single List Item
