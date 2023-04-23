@@ -33,6 +33,7 @@ In the SingleListItem component, the isSelected prop is being passed as a boolea
 background color of the <li> element. This will result in the background color being set to "green" when isSelected is truthy (which includes true, 
 non-empty strings, and non-zero numbers) and "red" otherwise. To fix this, the isSelected prop should be compared to the index of the current item,
  like this:
+ 
 style={{ backgroundColor: isSelected === index ? 'green' : 'red' }}
 
 The onClickHandler prop in the SingleListItem component is being called immediately when the component is rendered, instead of being passed as a
